@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="content-section">
+        <form method="POST" enctype="multipart/form-data" novalidate>
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom text-center text-uppercase text-white mb-4">Create Post</legend>
+                {{ form | crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button type="submit" class="btn btn-outline-info">Post</button>
+            </div>
+        </form>
+    </div>
+    <div class="footer mt-3">
+        <div class="col-md-12">
+            <div class=" text-center">
+                <ul class="footer-page">
+                    <li class="footer"><a class="about" href="https://about.instagram.com/">About</a></li>
+                    <li class="footer"><a class="privacy" href="https://help.instagram.com/519522125107875">Privacy</a></li>
+                    <li class="footer"><a class="terms" href="https://help.instagram.com/519522125107875">Terms</a></li>
+                  </li>
+                </ul>
+            </div>
+            <h4 class="copyright font-weight-bold">© 2021 Moses Valei</h4>
+        </div>
+    </div>
+{% endblock content %}
+
