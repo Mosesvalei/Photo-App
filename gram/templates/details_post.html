@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+  <h3 class="white-important mb-3">
+    Post
+  </h3>
+  <article class="media content-section">
+    <div style="width: 100%; word-break: break-all;" class="hovered-tweet-comment">
+      <div class="pb-2 row m-0 " style="width: 100%; margin-right: 0 !important;">
+        <div style="padding-left: 0px !important;" class="col-8 no-padding d-flex align-items-center">
+          <img class="rounded-circle mr-2" style="width: 20px; height: 20px;" src="{{ post.author.profile.image.url }}">
+          {{ post.author }}
+        </div>
+        <div class="col-4 d-flex flex-row-reverse no-padding align-items-center" style="padding-right: 0 !important;">
+          {% if post.author == user %}
+          <a class="material-icons ml-2" style="font-size: 14px" href="{% url 'post-delete' post.id %}">clear</a>
+          <a class="material-icons ml-2" style="font-size: 14px" href="{% url 'post-update' post.id %}">update</a>
+          {%  endif %}
+        </div>
+      </div>
+      <div class="mb-2 " style="width: 100%;">
+        <a>
+          <img class="card-img-top" class="img-responsive" src="{{post.image.url}}" size="100px200">
+          <p>
+            {{ post.content }}
+          </p>
+          <small class="white-important d-flex full-width flex-row-reverse">
+            {{ post.date_posted | date:"H:i l, d.m.y" }}
+          </small>
+        </a>
+      </div>
+  </article>
+</div>
+<div class="footer mt-3">
+  <div class="col-md-12">
+      <div class=" text-center">
+          <ul class="footer-page">
+              <li class="footer"><a class="about" href="https://about.instagram.com/">About</a></li>
+              <li class="footer"><a class="privacy" href="https://help.instagram.com/519522125107875">Privacy</a></li>
+              <li class="footer"><a class="terms" href="https://help.instagram.com/519522125107875">Terms</a></li>
+            </li>
+          </ul>
+      </div>
+      <h4 class="copyright font-weight-bold">© 2021 Moses Valei</h4>
+  </div>
+</div>
+{% endblock content %}
