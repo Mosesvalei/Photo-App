@@ -1,10 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from cloudinary.models import CloudinaryField 
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image =CloudinaryField(default='default.png', upload_to='profile_pics')
+    image =CloudinaryField(default='default.png')
     bio = models.TextField(max_length=100)
 
     def __str__(self):
