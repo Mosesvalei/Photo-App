@@ -15,6 +15,9 @@ import os
 import django_heroku
 import dj_database_url as db_url
 from decouple import config,Csv
+import cloudinary 
+import cloudinary.uploader
+import cloudinary.api
 
 MODE=config("MODE", default="dev")
 SECRET_KEY = config('SECRET_KEY')
@@ -54,7 +57,8 @@ INSTALLED_APPS = [
     'gram',
     'photoapp',
     'bootstrap4',
-    'crispy_forms'
+    'crispy_forms',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -156,6 +160,11 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+cloudinary.config(
+  cloud_name = 'dwgcpvz2g',  
+  api_key = '723848814441823',  
+  api_secret = 'TFI5VQzKfOhyYt1lW9ezY35AzMc'  
+)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
